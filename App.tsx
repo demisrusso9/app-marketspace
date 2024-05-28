@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator } from 'react-native'
+import { GluestackUIProvider, Box } from '@gluestack-ui/themed'
+import { config } from '@/theme'
+import { SignIn } from '@/screens/SignIn'
+import {
+  useFonts,
+  Karla_400Regular,
+  Karla_700Bold
+} from '@expo-google-fonts/karla'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const [fontsLoaded] = useFonts({
+    Karla_400Regular,
+    Karla_700Bold
+  })
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  return (
+    <GluestackUIProvider config={config}>
+      {fontsLoaded ? (
+        <SignIn />
+      ) : (
+        <Box
+          flex={1}
+          bg='$gray1'
+          justifyContent='center'
+          alignItems='center'
+          px={12}
+        >
+          <ActivityIndicator size='large' color='white' />
+        </Box>
+      )}
+    </GluestackUIProvider>
+  )
+}
