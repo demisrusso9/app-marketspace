@@ -13,12 +13,16 @@
     "@gluestack-style/react": "^1.0.56",
     "@gluestack-ui/config": "^1.1.18",
     "@gluestack-ui/themed": "^1.1.26",
+    "@hookform/resolvers": "^3.4.2",
     "expo": "~51.0.8",
     "expo-font": "~12.0.5",
     "expo-status-bar": "~1.12.1",
+    "phosphor-react-native": "^2.0.0",
     "react": "18.2.0",
+    "react-hook-form": "^7.51.5",
     "react-native": "0.74.1",
-    "react-native-svg": "^13.4.0"
+    "react-native-svg": "^13.4.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
