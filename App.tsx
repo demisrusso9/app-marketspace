@@ -1,5 +1,5 @@
-import { ActivityIndicator, StatusBar } from 'react-native'
-import { GluestackUIProvider, Box } from '@gluestack-ui/themed'
+import { ActivityIndicator } from 'react-native'
+import { GluestackUIProvider, Box, StatusBar } from '@gluestack-ui/themed'
 import { config } from '@/theme'
 import { SignIn } from '@/screens/SignIn'
 import { SignUp } from '@/screens/SignUp'
@@ -8,6 +8,7 @@ import {
   Karla_400Regular,
   Karla_700Bold
 } from '@expo-google-fonts/karla'
+import { Routes } from '@/routes'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,9 +25,9 @@ export default function App() {
       />
 
       {fontsLoaded ? (
-        // <SignIn />
-        <SignUp />
+        <Routes />
       ) : (
+        // <SignIn />
         <Box
           flex={1}
           bg='$gray1'
