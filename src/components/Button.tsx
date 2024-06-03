@@ -8,13 +8,14 @@ import {
 import TrashSimple from 'phosphor-react-native/src/icons/TrashSimple'
 import Power from 'phosphor-react-native/src/icons/Power'
 import WhatsappLogo from 'phosphor-react-native/src/icons/WhatsappLogo'
+import Plus from 'phosphor-react-native/src/icons/Plus'
 
 type GlueButtonProps = ComponentProps<typeof GlueButton>
 
 interface ButtonProps extends Omit<GlueButtonProps, 'variant'> {
   title: string
   variant: 'blue' | 'black' | 'gray'
-  icon?: 'trash' | 'power' | 'whatsapp'
+  icon?: 'trash' | 'power' | 'whatsapp' | 'plus'
 }
 
 export function Button({ title, variant, icon, ...rest }: ButtonProps) {
@@ -36,39 +37,31 @@ export function Button({ title, variant, icon, ...rest }: ButtonProps) {
     gray: '$gray3'
   }
 
+  const iconMap = {
+    trash: TrashSimple,
+    power: Power,
+    whatsapp: WhatsappLogo,
+    plus: Plus
+  }
+
+  const IconComponent = icon ? iconMap[icon] : null
+
   return (
-    <ButtonGroup>
+    <ButtonGroup flex={1}>
       <GlueButton
+        flex={1}
         alignItems='center'
         justifyContent='center'
         flexDirection='row'
-        w={'100%'}
         bg={bgColorMap[variant]}
         h={42}
         rounded={6}
+        p={12}
         {...rest}
       >
-        {icon === 'trash' && (
+        {IconComponent && (
           <ButtonIcon
-            as={TrashSimple}
-            size={16 as any}
-            mr={8}
-            color={iconColorMap[variant]}
-          />
-        )}
-
-        {icon === 'power' && (
-          <ButtonIcon
-            as={Power}
-            size={16 as any}
-            mr={8}
-            color={iconColorMap[variant]}
-          />
-        )}
-
-        {icon === 'whatsapp' && (
-          <ButtonIcon
-            as={WhatsappLogo}
+            as={IconComponent}
             size={16 as any}
             mr={8}
             color={iconColorMap[variant]}

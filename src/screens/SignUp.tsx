@@ -12,7 +12,7 @@ import {
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
-import { InputText } from '@/components/Input'
+import { InputText } from '@/components/InputText'
 import { Button } from '@/components/Button'
 import PencilSimpleLine from 'phosphor-react-native/src/icons/PencilSimpleLine'
 

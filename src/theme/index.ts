@@ -16,7 +16,8 @@ export const config = createConfig({
       gray4: '#9F9BA1',
       gray5: '#D9DBDA',
       gray6: '#EDECEE',
-      gray7: '#F7F7F8'
+      gray7: '#F7F7F8',
+      ...gluestackConfig.tokens.colors
     },
     fonts: {
       heading: 'Karla_700Bold',
@@ -28,6 +29,9 @@ export const config = createConfig({
       md: 16,
       lg: 20,
       xl: 24
+    },
+    opacity: {
+      ...gluestackConfig.tokens.opacity
     }
   }
 } as const)
