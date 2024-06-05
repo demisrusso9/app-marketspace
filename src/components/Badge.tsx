@@ -38,7 +38,7 @@ export function Badge({ title, variant, size, showIcon }: BadgeProps) {
       </Text>
 
       {showIcon && (
-        <Icon as={XCircle} ml={7.5} size={13 as any} color='$gray7' />
+        <XCircle style={{ marginLeft: 7 }} size={16 as any} weight='fill' color='#EDECEE' />
       )}
     </Box>
   )
