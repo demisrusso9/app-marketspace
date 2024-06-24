@@ -15,8 +15,16 @@ import Tag from 'phosphor-react-native/src/icons/Tag'
 import ArrowRight from 'phosphor-react-native/src/icons/ArrowRight'
 import { InputText } from '@/components/InputText'
 import { Card } from '@/components/Card'
+import { Filter } from '@/components/Filter'
+import { useState } from 'react'
 
 export function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(true)
+
+  function toggleModal() {
+    setIsModalOpen(!isModalOpen)
+  }
+
   return (
     <SafeAreaView flex={1}>
       <ScrollView>
@@ -71,7 +79,11 @@ export function Home() {
               Compre produtos variados
             </Text>
 
-            <InputText inputType='search' placeholder='Buscar anúncio' />
+            <InputText
+              inputType='search'
+              placeholder='Buscar anúncio'
+              toggleModal={toggleModal}
+            />
 
             <Box
               mt={24}
@@ -87,6 +99,8 @@ export function Home() {
             </Box>
           </VStack>
         </VStack>
+
+        <Filter isModalOpen={isModalOpen} toggleModal={toggleModal} />
       </ScrollView>
     </SafeAreaView>
   )

@@ -4,7 +4,6 @@ import {
   Image,
   Text,
   VStack,
-  Center,
   HStack
 } from '@gluestack-ui/themed'
 

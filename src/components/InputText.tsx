@@ -6,7 +6,8 @@ import {
   InputSlot,
   Text,
   Divider,
-  Button
+  Button as GlueStackButton,
+  Box
 } from '@gluestack-ui/themed'
 import Eye from 'phosphor-react-native/src/icons/Eye'
 import EyeClosed from 'phosphor-react-native/src/icons/EyeClosed'
@@ -17,12 +18,14 @@ interface InputFieldProps extends ComponentProps<typeof InputField> {
   inputType?: 'search' | 'password'
   displayCurrencyIcon?: boolean
   errorMessage?: string
+  toggleModal: () => void
 }
 
 export function InputText({
   inputType,
   displayCurrencyIcon,
   errorMessage,
+  toggleModal,
   ...rest
 }: InputFieldProps) {
   const [showPassword, setShowPassword] = useState(false)
@@ -38,7 +41,7 @@ export function InputText({
   }
 
   function handleFilter() {
-    console.log('handleFilter')
+    toggleModal()
   }
 
   return (
@@ -76,28 +79,28 @@ export function InputText({
         />
 
         {inputType === 'password' && (
-          <InputSlot pr={15} onPress={handlePasswordVisibility}>
+          <GlueStackButton pr={15} onPress={handlePasswordVisibility}>
             <InputIcon as={showPassword ? Eye : EyeClosed} size={20 as any} />
-          </InputSlot>
+          </GlueStackButton>
         )}
 
         {inputType === 'search' && (
-          <Button
+          <Box
             flexDirection='row'
             alignItems='center'
             justifyContent='center'
             pr={15}
           >
-            <InputSlot onPress={handleSearch}>
+            <GlueStackButton onPress={handleSearch}>
               <InputIcon as={MagnifyingGlass} size={20 as any} />
-            </InputSlot>
+            </GlueStackButton>
 
             <Divider orientation='vertical' mx={12} h={18} w={1} bg='$gray4' />
 
-            <InputSlot onPress={handleFilter}>
+            <GlueStackButton onPress={handleFilter}>
               <InputIcon as={Sliders} size={20 as any} />
-            </InputSlot>
-          </Button>
+            </GlueStackButton>
+          </Box>
         )}
       </Input>
     </>

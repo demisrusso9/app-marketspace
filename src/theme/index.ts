@@ -1,5 +1,7 @@
 import { createConfig } from '@gluestack-style/react'
 import { config as gluestackConfig } from "@gluestack-ui/config"
+import { MotionAnimationDriver } from "@gluestack-style/legend-motion-animation-driver";
+import { AnimationResolver } from "@gluestack-style/animation-resolver";
 
 export const config = createConfig({
   aliases: {
@@ -33,7 +35,8 @@ export const config = createConfig({
     opacity: {
       ...gluestackConfig.tokens.opacity
     }
-  }
+  },
+  plugins: [new AnimationResolver(MotionAnimationDriver)]
 } as const)
 
 type ConfigType = typeof config
